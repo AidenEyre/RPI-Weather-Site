@@ -4,19 +4,57 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/weather.css') }}">
     <title>Local Weather</title>
 </head>
 
 <body>
     <h1>Weather</h1>
-    <p>Here you can find the latest weather information for your area.</p>
-    <p>Temperature: {{ weather_data.temperature }}</p>
-    <p>Feels Like: {{ weather_data.feels_like }}</p>
-    <p>Humidity: {{ weather_data.humidity }}</p>
-    <p>Sky: {{ weather_data.sky }}</p>
-    <p>Wind: {{ weather_data.wind }}</p>
-    <p>Sunrise: {{ weather_data.sunrise }}</p>
-    <p>Sunset: {{ weather_data.sunset }}</p>
+    <h2>{{ weather_data['location'] }}</h2>
+    <div class="weather-wrapper">
+        <table>
+            <tr>
+                <th>Temperature</th>
+                <td>{{ weather_data['temperature'] }}°F</td>
+            </tr>
+            <tr>
+                <th>Feels Like</th>
+                <td>{{ weather_data['feels_like'] }}°F</td>
+            </tr>
+            <tr>
+                <th>Sky</th>
+                <td>{{ weather_data['sky'] }}</td>
+            </tr>
+            <tr>
+                <th>Wind</th>
+                <td>{{ weather_data['wind'] }} mph</td>
+            </tr>
+            <tr>
+                <th>Humidity</th>
+                <td>{{ weather_data['humidity'] }}%</td>
+            </tr>
+            <tr>
+                <th>Sunrise</th>
+                <td>{{ weather_data['sunrise'] }}</td>
+            </tr>
+            <tr>
+                <th>Sunset</th>
+                <td>{{ weather_data['sunset'] }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        setInterval(function () {
+            $.ajax({
+                url: '/get_data',
+                dataType: 'json',
+                success: function (data) {
+                    weather_data = data;
+                }
+            });
+        }, 60000);
+    </script>
 </body>
 
 </html>
