@@ -35,13 +35,21 @@ h2 {
     margin-bottom: 20px;
 }
 
-@media (max-width: 600px) {
+@media (min-width: 320px) and (max-width: 1024px) {
     table {
         width: 80%;
     }
 
-    th, td {
-        width: auto;
-        display: block;
+    h2 {
+        font-size: 42px;
+    }
+
+    th {
+        font-size: 40px;
+    }
+
+    td {
+        font-size: 36px;
+        width: 300px;
     }
 }
