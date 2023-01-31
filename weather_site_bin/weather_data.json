@@ -1,0 +1,10 @@
+{
+    "temperature": "noData",
+    "feels_like": "noData",
+    "humidity": "noData",
+    "sky": "noData",
+    "wind": "noData",
+    "sunrise": "noData",
+    "sunset": "noData",
+    "location": "noData"
+}

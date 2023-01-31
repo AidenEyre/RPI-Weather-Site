@@ -10,39 +10,61 @@
 
 <body>
     <h1>Weather</h1>
-    <h2>{{ weather_data['location'] }}</h2>
+    <h2 id="location"></h2>
     <div class="weather-wrapper">
         <table>
             <tr>
                 <th>Temperature</th>
-                <td>{{ weather_data['temperature'] }}°F</td>
+                <td id="temperature"></td>
             </tr>
             <tr>
                 <th>Feels Like</th>
-                <td>{{ weather_data['feels_like'] }}°F</td>
+                <td id="feels_like"></td>
             </tr>
             <tr>
                 <th>Sky</th>
-                <td>{{ weather_data['sky'] }}</td>
+                <td id="sky"></td>
             </tr>
             <tr>
                 <th>Wind</th>
-                <td>{{ weather_data['wind'] }} mph</td>
+                <td id="wind"></td>
             </tr>
             <tr>
                 <th>Humidity</th>
-                <td>{{ weather_data['humidity'] }}%</td>
+                <td id="humidity"></td>
             </tr>
             <tr>
                 <th>Sunrise</th>
-                <td>{{ weather_data['sunrise'] }}</td>
+                <td id="sunrise"></td>
             </tr>
             <tr>
                 <th>Sunset</th>
-                <td>{{ weather_data['sunset'] }}</td>
+                <td id="sunset"></td>
             </tr>
         </table>
     </div>
+
+    <script>
+        var weather_data = {};
+
+        function updateWeatherData() {
+            fetch("/fetch_weather_data")
+                .then(response => response.json())
+                .then(data => {
+                    weather_data = data;
+                    document.getElementById("temperature").innerHTML = weather_data.temperature;
+                    document.getElementById("feels_like").innerHTML = weather_data.feels_like;
+                    document.getElementById("humidity").innerHTML = weather_data.humidity;
+                    document.getElementById("sky").innerHTML = weather_data.sky;
+                    document.getElementById("wind").innerHTML = weather_data.wind;
+                    document.getElementById("sunrise").innerHTML = weather_data.sunrise;
+                    document.getElementById("sunset").innerHTML = weather_data.sunset;
+                    document.getElementById("location").innerHTML = weather_data.location;
+                });
+        }
+
+        window.onload = updateWeatherData;
+    </script>
 </body>
 
 </html>
