@@ -1,5 +1,7 @@
 import requests
 import pytz
+import os
+import constants
 from datetime import datetime
 
 
@@ -18,7 +20,7 @@ def get_weather(location):
         + "&lon="
         + str(coords["lon"])
         + "&appid="
-        + api_key
+        + constants.OPEN_WEATHER_MAP_API_KEY
         + "&units=imperial"
     )
     response = requests.get(complete_url)
@@ -50,6 +52,7 @@ def get_weather(location):
         "wind": wind,
         "sunrise": sunrise,
         "sunset": sunset,
+        "location": coords["name"]
     }
     return weather_data
 
@@ -60,7 +63,7 @@ class Weather:
         for the given zip code.
         """
         base_url = "http://api.openweathermap.org/geo/1.0/zip?"
-        complete_url = base_url + "zip=" + location + ",US" + "&appid=" + api_key
+        complete_url = base_url + "zip=" + location + ",US" + "&appid=" + constants.OPEN_WEATHER_MAP_API_KEY
         response = requests.get(complete_url)
 
         return response.json()
