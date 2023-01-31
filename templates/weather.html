@@ -43,18 +43,6 @@
             </tr>
         </table>
     </div>
-
-    <script>
-        setInterval(function () {
-            $.ajax({
-                url: '/get_data',
-                dataType: 'json',
-                success: function (data) {
-                    weather_data = data;
-                }
-            });
-        }, 60000);
-    </script>
 </body>
 
 </html>
