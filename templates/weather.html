@@ -10,61 +10,8 @@
 
 <body>
     <h1>Weather</h1>
-    <h2 id="location"></h2>
-    <div class="weather-wrapper">
-        <table>
-            <tr>
-                <th>Temperature</th>
-                <td id="temperature"></td>
-            </tr>
-            <tr>
-                <th>Feels Like</th>
-                <td id="feels_like"></td>
-            </tr>
-            <tr>
-                <th>Sky</th>
-                <td id="sky"></td>
-            </tr>
-            <tr>
-                <th>Wind</th>
-                <td id="wind"></td>
-            </tr>
-            <tr>
-                <th>Humidity</th>
-                <td id="humidity"></td>
-            </tr>
-            <tr>
-                <th>Sunrise</th>
-                <td id="sunrise"></td>
-            </tr>
-            <tr>
-                <th>Sunset</th>
-                <td id="sunset"></td>
-            </tr>
-        </table>
-    </div>
-
-    <script>
-        var weather_data = {};
-
-        function updateWeatherData() {
-            fetch("/fetch_weather_data")
-                .then(response => response.json())
-                .then(data => {
-                    weather_data = data;
-                    document.getElementById("temperature").innerHTML = weather_data.temperature;
-                    document.getElementById("feels_like").innerHTML = weather_data.feels_like;
-                    document.getElementById("humidity").innerHTML = weather_data.humidity;
-                    document.getElementById("sky").innerHTML = weather_data.sky;
-                    document.getElementById("wind").innerHTML = weather_data.wind;
-                    document.getElementById("sunrise").innerHTML = weather_data.sunrise;
-                    document.getElementById("sunset").innerHTML = weather_data.sunset;
-                    document.getElementById("location").innerHTML = weather_data.location;
-                });
-        }
-
-        window.onload = updateWeatherData;
-    </script>
+    <div id="weatherWrapper"></div>
+    <script src="{{ url_for('static', filename='js/weather.js') }}"></script>
 </body>
 
 </html>
