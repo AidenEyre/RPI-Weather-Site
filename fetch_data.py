@@ -3,13 +3,17 @@ import json
 import os
 from weather import get_weather
 
+zip_codes = ["84010", "84044", "84414"]
+
 
 def update_data():
     """This function is intended to continuously run every five minutes
     and run fetch functions for all gathered API data in the web app.
     """
     while True:
-        weather_data = get_weather("84010")
+        weather_data = []
+        for zip_code in zip_codes:
+            weather_data.append(get_weather(zip_code))
         Fetch.write_weather_to_file(weather_data)
         time.sleep(300)  # sleep for 5 minutes
 
