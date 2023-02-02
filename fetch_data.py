@@ -3,7 +3,7 @@ import json
 import os
 from weather import get_weather
 
-zip_codes=["84010", "84044", "84414"]
+zip_codes = ["84010", "84044", "84414"]
 
 
 def update_data():
