@@ -1,9 +1,32 @@
-h1 {
+.header {
     border: 2px #eee solid;
     color: brown;
-    text-align: center;
     padding: 10px;
-    font-size: 50px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.header::before,
+.title,
+.gear-icon {
+    content: '';
+    flex-basis: 100%;
+}
+
+.title {
+    font-size: 52px;
+    text-align: center;
+    flex-basis: 400%;
+}
+
+.gear-icon {
+    text-align: right;
+}
+
+.gear-icon svg {
+    width: 52px;
+    height: 52px;
 }
 
 a {
